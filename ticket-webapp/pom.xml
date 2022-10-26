@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ticket</artifactId>
+    <groupId>com.iracanyes.demo.j2ee</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.iracanyes.demo.j2ee</groupId>
+  <artifactId>ticket-webapp</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>ticket-webapp</name>
+  <url>https://iracanyes.com/demo/j2ee/ticket</url>
+
+  <!-- ===== Organisation ===== -->
+  <organization>
+    <name>Mon entreprise</name>
+    <url>https://www.iracanyes.com</url>
+  </organization>
+
+  <!-- ===== Licences ===== -->
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <application.name>Ticket Tac</application.name>
+    <!-- Format à utiliser pour afficher la date du build -->
+    <maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
+    <!-- Propriété servant à contourner le bug du non remplacement
+         de la propriété maven.build.timestamp lors du filtrage des ressources -->
+    <buildTimestamp>${maven.build.timestamp}</buildTimestamp>
+  </properties>
+
+  <dependencies>
+    <!-- ==== Modules ==== -->
+    <dependency>
+      <groupId>com.iracanyes.demo.j2ee</groupId>
+      <artifactId>ticket-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.iracanyes.demo.j2ee</groupId>
+      <artifactId>ticket-business</artifactId>
+    </dependency>
+
+    <!-- ==== Libraries externes ==== -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.bval</groupId>
+      <artifactId>bval-jsr</artifactId>
+    </dependency>
+    <!-- ===== JSTL libraries ========== -->
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-spec</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-jstlel</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>xalan</groupId>
+      <artifactId>serializer</artifactId>
+    </dependency>
+    <!-- ===== End JSTL libraries ========== -->
+  </dependencies>
+
+  <build>
+    <finalName>ticket-webapp</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+      </plugin>
+      <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <webResources>
+            <resource>
+              <filtering>true</filtering>
+              <!-- Path is relative to the pom.xml directory -->
+              <!-- directory "webapp" is created by the IDE for containing all web application files
+                The name of the directory depends on the IDE :
+                 - Intellij IDea use the name "webapp"
+                 - Eclipse use the name "webcontent"
+              -->
+              <directory>src/main/webapp</directory>
+              <includes>
+                <!-- Path is relative to  directory specified in <directory> -->
+                <include>WEB-INF/jsp/_include/*</include>
+                <include>WEB-INF/jsp/page/*</include>
+              </includes>
+            </resource>
+            <resource>
+              <filtering>true</filtering>
+              <!-- Path is relative to the pom.xml directory -->
+              <directory>src/main/resources</directory>
+              <includes>
+                <!-- Path is relative to  directory specified in <directory> -->
+                <include>img/*</include>
+                <include>**/*.js</include>
+              </includes>
+            </resource>
+            <resource>
+              <filtering>false</filtering>
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>**/*.css</include>
+              </includes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      <!-- Plugin for SASS/SCSS style file
+        See documentation:
+          - SASS docs: https://sass-lang.com/libsass#java
+          - Plugin docs : https://gitlab.com/haynes/libsass-maven-plugin
+      -->
+      <plugin>
+        <groupId>com.gitlab.haynes</groupId>
+        <artifactId>libsass-maven-plugin</artifactId>
+        <version>0.2.28</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <inputPath>${basedir}/src/main/resources/sass</inputPath>
+          <outputPath>${project.build.directory}/${project.build.finalName}/WEB-INF/resources/css/</outputPath>
+          <includePath>${basedir}/src/main/resources/sass/plugins/</includePath>
+          <!-- Output style for the generated css code. One of nested, expanded, compact, compressed. -->
+          <outputStyle>nested</outputStyle>
+          <generateSourceMap>true</generateSourceMap>
+          <sourceMapOutputPath>${project.build.directory}/${project.build.finalName}/WEB-INF/resources/css/</sourceMapOutputPath>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>target-prod</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-enforcer-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>enforce-target-prod-no-snapshot</id>
+                <phase>validate</phase>
+                <goals>
+                  <goal>enforce</goal>
+                </goals>
+                <configuration>
+                  <rules>
+                    <!-- Le projet et son parent ne doivent pas être des snapshots -->
+                    <requireReleaseVersion />
+                    <!-- Les dépendances ne doivent être des versions snapshots -->
+                    <requireReleaseDeps />
+                  </rules>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

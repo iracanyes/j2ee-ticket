@@ -1,0 +1,39 @@
+<project
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/DECORATION/1.7.0 http://maven.apache.org/xsd/decoration-1.7.0.xsd"
+>
+  <!-- Ce fichier de configuration est filtré par Maven, on peut utiliser les propriétés du POM -->
+  <!-- Utilisation du template de site fluido -->
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.11.1</version>
+  </skin>
+
+  <!-- Affichage de la date et de la version à droite dans le bandeau du header -->
+  <publishDate  position="right"/>
+  <version position="right" />
+
+  <body>
+    <!-- Ajout d'un fil d'ariane -->
+    <breadcrumbs>
+      <item name="Accueil" href="index.html" />
+    </breadcrumbs>
+
+    <!-- === Menus ==== -->
+    <!-- Ajout d'un menu vers le projet parent -->
+    <menu name="Ticket Tac" ref="parent" inherit="top" />
+
+    <!-- Ajout d'un menu vers les différents modules du projet -->
+    <menu name="Modules" ref="modules" inherit="top"/>
+
+    <!-- Ajout d'un menu des pages personnalisés -->
+    <menu name="Documentation">
+      <item name="Maven Docs" href="maven.html" />
+      <item name="FAQ" href="faq.html" />
+    </menu>
+
+    <!-- Ajout du menu vers les rapports générés par Maven -->
+    <menu name="Rapport" ref="reports" inherit="top" />
+  </body>
+</project>

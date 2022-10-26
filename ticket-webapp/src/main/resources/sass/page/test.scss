@@ -1,0 +1,14 @@
+body#test{
+  main{
+    section#sidebar{
+      height: 100%;
+      nav{
+        height: inherit;
+      }
+    }
+
+    section#main-content{
+      overflow-x: scroll;
+    }
+  }
+}

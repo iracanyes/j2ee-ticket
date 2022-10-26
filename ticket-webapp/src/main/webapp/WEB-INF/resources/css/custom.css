@@ -1,0 +1,63 @@
+body{
+  height: 100vh;
+}
+
+header nav{
+  background-color: #212529;
+}
+
+main{
+
+}
+
+section#sidebar{
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+section#main-content{
+  height: inherit;
+  max-width: 1200px;
+  margin-left: 300px
+}
+
+pre{
+  padding: 10px 0;
+  max-width: 800px;
+  background-color: rgb(23, 15, 38);
+  color: #f4f4f4;
+}
+pre.result{
+  padding: 10px;
+  background-color: rgb(236, 230, 247);
+  color: black;
+}
+
+
+/* Responsive layout -
+makes the menu and the content (inside the section)
+sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 900px){
+  section#sidebar{
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+
+  section#main-content{
+    margin-left: 300px
+  }
+}

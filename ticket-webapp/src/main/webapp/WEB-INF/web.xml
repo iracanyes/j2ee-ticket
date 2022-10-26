@@ -1,0 +1,167 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0"
+>
+  <icon>
+    <small-icon>/WEB-INF/resources/svg/favicon.ico</small-icon>
+  </icon>
+  <display-name>${application.name}</display-name>
+  <description>Ticket Tac est une application de test Java Enterprise Edition</description>
+
+  <!--
+  Add  Java Standard Tag libraries for all JSP files
+  by including a snippet of code in a JSP file at the top of each file
+ -->
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>*.jsp</url-pattern>
+      <include-prelude>/WEB-INF/jsp/taglibs.jsp</include-prelude>
+    </jsp-property-group>
+  </jsp-config>
+
+  <!-- =================================== Page Mapping ===================================================== -->
+  <!-- ========================== Page About==================================== -->
+  <servlet>
+    <servlet-name>About</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.About</servlet-class>
+    <description>Handle requests for page "About"</description>
+    <!-- Si une page JSP est définie, elle sera retournée pour la route
+    <jsp-file>/WEB-INF/jsp/page/about.jsp</jsp-file>
+    -->
+
+    <init-param>
+      <param-name>random</param-name>
+      <param-value>3.2</param-value>
+    </init-param>
+
+    <!-- chargement de la servlet au démarrage avec l'ordre de chargement de 1-->
+    <load-on-startup>1</load-on-startup>
+    <!--
+      <security-role-ref></security-role-ref>
+    -->
+  </servlet>
+  <servlet-mapping>
+    <!-- servlet-name doit correspond au nom du servlet pour lequel
+    on veut définir un mapping. Le serveur identifie quel servlet appellé
+    pour une requête par le nom du servlet et l'URL de la requête
+    -->
+    <servlet-name>About</servlet-name>
+    <url-pattern>/about</url-pattern>
+  </servlet-mapping>
+  <!-- =================================== End Page About ===================================================== -->
+
+  <!-- =================================== Page test =================================== -->
+  <servlet>
+    <servlet-name>Test</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.Test</servlet-class>
+    <!-- Si une page JSP est définie, elle sera retournée pour la route
+    <jsp-file>/WEB-INF/jsp/page/test.jsp</jsp-file>
+     -->
+    <!-- chargement de la servlet au démarrage avec l'ordre de chargement de 1-->
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  <!-- ================================ End Page test ======================== -->
+
+  <!-- ====== Page Home ========= -->
+  <servlet>
+    <servlet-name>Home</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.Home</servlet-class>
+    <!-- chargement de la servlet au démarrage avec l'ordre de chargement de 1-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Home</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <!-- ====== End Page Home ========= -->
+
+  <!-- =================================== Page test =================================== -->
+  <servlet>
+    <servlet-name>Jstl</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.Jstl</servlet-class>
+    <!-- Si une page JSP existe, elle sera retournée pour la route
+
+     -->
+    <jsp-file>/WEB-INF/jsp/page/java_standard_tag_lib.jsp</jsp-file>
+
+    <!-- chargement de la servlet au démarrage avec l'ordre de chargement de 1-->
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jstl</servlet-name>
+    <url-pattern>/jstl</url-pattern>
+  </servlet-mapping>
+  <!-- ================================ End Page test ======================== -->
+
+  <!-- ================================ Page forms ======================== -->
+  <servlet>
+    <servlet-name>Forms</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.Forms</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Forms</servlet-name>
+    <url-pattern>/forms/samples</url-pattern>
+  </servlet-mapping>
+  <!-- ================================ End Page forms ======================== -->
+
+  <!-- ================================ Page Login Form ======================== -->
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.Login</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/forms/login</url-pattern>
+  </servlet-mapping>
+  <!-- ================================ End Page Login Form ======================== -->
+
+  <!-- ================================ Page Create User Form ======================== -->
+  <servlet>
+    <servlet-name>NameForm</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.NameForm</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NameForm</servlet-name>
+    <url-pattern>/forms/create_fullname</url-pattern>
+  </servlet-mapping>
+  <!-- ================================ End Page Create User Form ======================== -->
+
+  <!-- ================================ Page Send file form ======================== -->
+  <servlet>
+    <servlet-name>SendFile</servlet-name>
+    <servlet-class>com.iracanyes.demo.j2ee.ticket.webapp.servlets.FileForm</servlet-class>
+    <load-on-startup>2</load-on-startup>
+    <!-- Configuration for uploading files -->
+    <multipart-config>
+      <!-- Location to store files  -->
+      <location>C:\Projets\cours\frameworks\java\j2ee\ticket\dist\tmp_files\</location>
+      <!-- Size of uploaded files -->
+      <max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+      <!-- Size of request  -->
+      <max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+      <!-- Size after which an uploaded file is written to disk -->
+      <file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SendFile</servlet-name>
+    <url-pattern>/send_file</url-pattern>
+  </servlet-mapping>
+  <!-- ================================ End Page Send file form ======================== -->
+
+
+</web-app>

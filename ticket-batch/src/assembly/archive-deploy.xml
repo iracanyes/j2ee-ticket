@@ -1,0 +1,41 @@
+<assembly
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+  xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/ASSEMBLY/2.0.0.xsd "
+>
+  <!-- Identification de l'assemblage -->
+  <id>archive-deploy</id>
+
+  <!-- Les formats d'archive à générer -->
+  <formats>
+    <format>tar.gz</format>
+    <format>zip</format>
+  </formats>
+
+  <!-- Définition d'un ensemble de dépendances -->
+  <dependencySets>
+    <!-- Le répertoire lib contiendra les Jar des dépendances + JAR ticket-batch -->
+    <dependencySet>
+      <outputDirectory>lib</outputDirectory>
+      <scope>runtime</scope>
+    </dependencySet>
+  </dependencySets>
+
+  <!-- Ensemble de fichier  -->
+  <fileSets>
+    <!-- Scripts shell de lancement -->
+    <fileSet>
+      <directory>src/data/scripts</directory>
+      <outputDirectory>bin</outputDirectory>
+      <!-- Droit UNIX sur les fichiers (-rwx-rx-rx) -->
+      <fileMode>0755</fileMode>
+    </fileSet>
+
+    <!-- Fichiers de configuration -->
+    <fileSet>
+      <directory>src/data/conf</directory>
+      <outputDirectory>conf</outputDirectory>
+    </fileSet>
+  </fileSets>
+
+</assembly>

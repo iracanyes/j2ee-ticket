@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.iracanyes.demo.j2ee</groupId>
+  <artifactId>ticket</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>ticket</name>
+  <url>https://iracanyes.com/demo/j2ee/ticket</url>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Compiling error :
+      Source option 5 is no longer supported. Use 7 or later.
+      Default compiler version is : 1.5 .
+      Use compiler version : 1.8 for Java 8 or higher
+    -->
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+
+  <modules>
+    <module>ticket-batch</module>
+    <module>ticket-webapp</module>
+    <module>ticket-webapi</module>
+    <module>ticket-business</module>
+    <module>ticket-consumer</module>
+    <module>ticket-model</module>
+  </modules>
+
+
+  <!-- Gestion des dépendances -->
+  <dependencyManagement>
+      <dependencies>
+        <!-- =========== modules ========================== -->
+        <dependency>
+            <groupId>com.iracanyes.demo.j2ee</groupId>
+            <artifactId>ticket-batch</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iracanyes.demo.j2ee</groupId>
+            <artifactId>ticket-webapp</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+          <groupId>com.iracanyes.demo.j2ee</groupId>
+          <artifactId>ticket-webapi</artifactId>
+          <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iracanyes.demo.j2ee</groupId>
+            <artifactId>ticket-business</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iracanyes.demo.j2ee</groupId>
+            <artifactId>ticket-consumer</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.iracanyes.demo.j2ee</groupId>
+            <artifactId>ticket-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- =========== bibliothèques tierces ========================== -->
+        <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-collections4</artifactId>
+          <version>4.4</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-text</artifactId>
+          <version>1.10.0</version>
+        </dependency>
+        <dependency>
+          <groupId>jakarta.servlet</groupId>
+          <artifactId>jakarta.servlet-api</artifactId>
+          <version>6.0.0</version>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>jakarta.platform</groupId>
+          <artifactId>jakarta.jakartaee-web-api</artifactId>
+          <version>10.0.0</version>
+          <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>jakarta.validation</groupId>
+          <artifactId>jakarta.validation-api</artifactId>
+          <version>3.0.2</version>
+          <scope>compile</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.bval</groupId>
+          <artifactId>bval-jsr</artifactId>
+          <version>2.0.5</version>
+          <scope>runtime</scope>
+        </dependency>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.13.1</version>
+          <scope>test</scope>
+        </dependency>
+        <!-- ===== JSTL libraries ========== -->
+        <dependency>
+          <groupId>org.glassfish.web</groupId>
+          <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+          <version>3.0.0</version>
+        </dependency>
+        <dependency>
+          <groupId>jakarta.servlet.jsp.jstl</groupId>
+          <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+          <version>3.0.0</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.taglibs</groupId>
+          <artifactId>taglibs-standard-spec</artifactId>
+          <version>1.2.5</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.taglibs</groupId>
+          <artifactId>taglibs-standard-impl</artifactId>
+          <version>1.2.5</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.taglibs</groupId>
+          <artifactId>taglibs-standard-jstlel</artifactId>
+          <version>1.2.5</version>
+        </dependency>
+        <dependency>
+          <groupId>xalan</groupId>
+          <artifactId>serializer</artifactId>
+          <version>2.7.2</version>
+        </dependency>
+        <!-- ===== End JSTL libraries ========== -->
+      </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <finalName>ticket</finalName>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.10.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.3.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M7</version>
+        </plugin>
+        <!-- Plugin pour générer un site pour le projet -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>4.0.0-M3</version>
+          <configuration>
+            <!-- default locales -->
+            <locales>fr</locales>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.maven.skins</groupId>
+              <artifactId>maven-fluido-skin</artifactId>
+              <version>1.11.1</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <!-- Distribution management
+    URL Must be set to deploy the app
+  -->
+  <distributionManagement>
+    <site>
+      <id>iracanyes.com.demo.j2ee.ticket</id>
+      <url>scp://iracanyes.com/docker/iracanyes.com/java/iracanyes.com-j2ee.ticket</url>
+    </site>
+  </distributionManagement>
+
+
+  <!-- ======================================================= -->
+  <!-- Gestion des rapports -->
+  <!-- ======================================================= -->
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.4.1</version>
+        <!-- Spécifier les rapports voulus -->
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>summary</report>
+              <report>plugins</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <!-- Ajout d'autres plugins de reporting -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>3.0.0-M7</version>
+        <configuration>
+          <linkXRef>false</linkXRef>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report-only</report>
+            </reports>
+          </reportSet>
+          <!-- Ensemble de rapports agrégés -->
+          <reportSet>
+            <id>aggregate</id>
+            <reports>
+              <report>report</report>
+            </reports>
+            <!-- Ne pas exécuter ce sous-rapport dans les sous-projets -->
+            <inherited>false</inherited>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
+          </reportSet>
+
+          <!-- reportSet non agrégé, exécuté dans tous les sous-projets (modules) -->
+          <reportSet>
+            <id>modules</id>
+            <!-- exécuter ce sous-rapport dans les sous-projets -->
+            <inherited>true</inherited>
+            <reports>
+              <report>report</report>
+            </reports>
+            <configuration>
+              <aggregate>false</aggregate>
+            </configuration>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <!-- ======= Génération de la Javadoc ======= -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.4.1</version>
+        <configuration>
+          <quiet>true</quiet>
+          <locale>fr</locale>
+        </configuration>
+        <reportSets>
+          <!-- Ensemble de rapport exécuté dans tous les modules -->
+          <reportSet>
+            <reports>
+              <report>javadoc</report>
+            </reports>
+          </reportSet>
+          <!-- Ensemble de rapport d'agrégation des rapports des sous-projets -->
+          <reportSet>
+            <id>aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+
+      <!-- ==== Rapport d'analyse du code par Checkstyle === -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <configLocation>src/build/checkstyle.xml</configLocation>
+          <linkXRef>false</linkXRef>
+        </configuration>
+        <reportSets>
+          <!-- reportSet exécuté dans tous les modules -->
+          <reportSet>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+          <!-- reportSet d'agrégation des rapports des sous-modules -->
+          <reportSet>
+            <id>checkstyle-aggregate</id>
+            <inherited>false</inherited>
+            <configuration>
+              <skipExec>true</skipExec>
+            </configuration>
+            <reports>
+              <report>checkstyle-aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+</project>

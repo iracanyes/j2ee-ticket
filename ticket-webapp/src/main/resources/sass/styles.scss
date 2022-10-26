@@ -1,0 +1,21 @@
+/* Pages */
+@import "page/homepage";
+@import "page/test";
+@import "page/forms";
+
+body{
+  font-family: "Inter var", Arial, Helvetica, sans-serif;
+}
+
+main{
+  section#sidebar{
+    height: 100%;
+    nav{
+      height: inherit;
+    }
+  }
+
+  section#main-content{
+    overflow-x: scroll;
+  }
+}

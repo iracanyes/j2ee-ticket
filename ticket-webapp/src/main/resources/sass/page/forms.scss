@@ -1,0 +1,10 @@
+body#forms{
+  fieldset{
+    display: flex;
+    flex-direction: column;
+
+    div.form-group{
+      margin-bottom: 15px;
+    }
+  }
+}
