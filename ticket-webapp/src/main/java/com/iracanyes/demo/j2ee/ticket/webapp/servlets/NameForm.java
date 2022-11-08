@@ -11,7 +11,7 @@ import com.iracanyes.demo.j2ee.ticket.FullNameService;
 import com.iracanyes.demo.j2ee.ticket.dao.DaoException;
 import com.iracanyes.demo.j2ee.ticket.dao.MysqlDaoFactory;
 import com.iracanyes.demo.j2ee.ticket.dao.FullNameDao;
-import com.iracanyes.demo.j2ee.ticket.model.FullName;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.FullName;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

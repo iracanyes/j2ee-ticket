@@ -1,4 +1,4 @@
-package com.iracanyes.demo.j2ee.ticket;
+package com.iracanyes.demo.j2ee.ticket.model.bean.intro;
 
 /**
  * Author class
@@ -11,6 +11,8 @@ public class Author
   private String lastname;
   private String website;
   private boolean active;
+
+  public Author(){}
 
   public Author(String firstname, String lastname){
     this.firstname = firstname;

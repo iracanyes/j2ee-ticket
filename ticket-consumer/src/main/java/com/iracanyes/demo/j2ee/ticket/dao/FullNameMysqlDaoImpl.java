@@ -1,6 +1,6 @@
 package com.iracanyes.demo.j2ee.ticket.dao;
 
-import com.iracanyes.demo.j2ee.ticket.model.FullName;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.FullName;
 
 import java.sql.*;
 import java.util.ArrayList;

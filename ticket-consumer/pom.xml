@@ -85,6 +85,8 @@
           <files>
             <file>src/main/resources/config.properties</file>
           </files>
+          <outputFile/>
+          <properties/>
         </configuration>
       </plugin>
       <plugin>

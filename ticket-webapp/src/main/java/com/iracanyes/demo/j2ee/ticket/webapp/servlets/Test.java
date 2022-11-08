@@ -2,7 +2,7 @@ package com.iracanyes.demo.j2ee.ticket.webapp.servlets;
 
 //import jakarta.servlet.*;
 //import jakarta.servlet.http.*;
-import com.iracanyes.demo.j2ee.ticket.Author;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.Author;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -5,7 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import com.iracanyes.demo.j2ee.ticket.forms.FileHandler;
+import com.iracanyes.demo.j2ee.ticket.business.forms.FileHandler;
 
 import java.io.IOException;
 

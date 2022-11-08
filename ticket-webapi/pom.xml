@@ -2,26 +2,39 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!-- =============================================================== -->
+  <!-- Informations du projet -->
+  <!-- =============================================================== -->
+  <!-- ===== Projet Parent Maven ===== -->
   <parent>
     <artifactId>ticket</artifactId>
     <groupId>com.iracanyes.demo.j2ee</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.iracanyes.demo.j2ee</groupId>
+  <!-- ===== Informations Maven ===== -->
+  <modelVersion>4.0.0</modelVersion>
   <artifactId>ticket-webapi</artifactId>
   <version>1.0-SNAPSHOT</version>
-
-  <name>ticket-webapi</name>
-  <url>http:/iracanyes.com/demo/j2ee/ticket/api</url>
   <packaging>war</packaging>
 
+  <!-- ===== Informations générales ===== -->
+  <name>ticket-webapi</name>
+  <url>http:/iracanyes.com/demo/j2ee/ticket/api</url>
+
+  <!-- =============================================================== -->
+  <!-- Propriétés -->
+  <!-- =============================================================== -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+    <!-- Format à utiliser pour afficher la date du build -->
+    <maven.build.timestamp.format>dd/MM/yyyy</maven.build.timestamp.format>
+    <!-- Propriété servant à contourner le bug du non remplacement
+         de la propriété maven.build.timestamp lors du filtrage des ressources -->
+    <build.timestamp>${maven.build.timestamp}</build.timestamp>
   </properties>
 
   <dependencies>
@@ -36,9 +49,45 @@
     </dependency>
     <!-- ==== Libraries externes ==== -->
     <dependency>
-      <groupId>jakarta.platform</groupId>
-      <artifactId>jakarta.jakartaee-web-api</artifactId>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.bval</groupId>
+      <artifactId>bval-jsr</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-moxy</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-import com.iracanyes.demo.j2ee.ticket.forms.LoginForm;
+import com.iracanyes.demo.j2ee.ticket.business.forms.LoginForm;
 
 @WebServlet(name = "Login", value = "/login")
 public class Login extends HttpServlet {

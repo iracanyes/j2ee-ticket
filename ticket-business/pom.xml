@@ -8,7 +8,7 @@
     <artifactId>ticket</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <groupId>com.iracanyes.demo.j2ee</groupId>
+
   <artifactId>ticket-business</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>ticket-business</name>

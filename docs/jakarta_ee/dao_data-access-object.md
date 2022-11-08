@@ -224,7 +224,7 @@ performed for the type ```FullName``` class of our model, independently of the d
 ````java
 package com.iracanyes.demo.j2ee.ticket.dao;
 
-import com.iracanyes.demo.j2ee.ticket.model.FullName;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.FullName;
 
 import java.util.List;
 
@@ -249,7 +249,7 @@ which defines the type of operations performed on the type ``FullName`` of the m
 ````java
 package com.iracanyes.demo.j2ee.ticket.dao;
 
-import com.iracanyes.demo.j2ee.ticket.model.FullName;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.FullName;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -349,7 +349,7 @@ import java.util.logging.Logger;
 import com.iracanyes.demo.j2ee.ticket.FullNameService;
 import com.iracanyes.demo.j2ee.ticket.dao.MysqlDaoFactory;
 import com.iracanyes.demo.j2ee.ticket.dao.FullNamelDao;
-import com.iracanyes.demo.j2ee.ticket.model.FullName;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.FullName;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

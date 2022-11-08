@@ -5,7 +5,7 @@
 * Database request for existing user.
 *
 * */
-package com.iracanyes.demo.j2ee.ticket.forms;
+package com.iracanyes.demo.j2ee.ticket.business.forms;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;

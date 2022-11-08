@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-import com.iracanyes.demo.j2ee.ticket.Author;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.Author;
 
 @WebServlet(name = "Jstl", value = "/Jstl")
 public class Jstl extends HttpServlet {

@@ -1,8 +1,7 @@
 package com.iracanyes.demo.j2ee.ticket;
 
-import com.iracanyes.demo.j2ee.ticket.model.FullName;
+import com.iracanyes.demo.j2ee.ticket.model.bean.intro.FullName;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;

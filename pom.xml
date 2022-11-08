@@ -20,6 +20,7 @@
     -->
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <jersey.version>3.1.0</jersey.version>
   </properties>
 
 
@@ -80,16 +81,40 @@
           <version>1.10.0</version>
         </dependency>
         <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.12.0</version>
+        </dependency>
+        <dependency>
           <groupId>jakarta.servlet</groupId>
           <artifactId>jakarta.servlet-api</artifactId>
           <version>6.0.0</version>
           <scope>provided</scope>
         </dependency>
+        <!--
         <dependency>
           <groupId>jakarta.platform</groupId>
           <artifactId>jakarta.jakartaee-web-api</artifactId>
           <version>10.0.0</version>
           <scope>provided</scope>
+        </dependency>
+        -->
+        <dependency>
+          <groupId>jakarta.ws.rs</groupId>
+          <artifactId>jakarta.ws.rs-api</artifactId>
+          <version>3.1.0</version>
+        </dependency>
+        <dependency>
+          <groupId>org.glassfish.jersey</groupId>
+          <artifactId>jersey-bom</artifactId>
+          <version>${jersey.version}</version>
+          <type>pom</type>
+          <scope>import</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.glassfish.jersey.media</groupId>
+          <artifactId>jersey-media-json-jackson</artifactId>
+          <version>${jersey.version}</version>
         </dependency>
         <dependency>
           <groupId>jakarta.validation</groupId>

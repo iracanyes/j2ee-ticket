@@ -5,7 +5,7 @@
 * Database request for existing user.
 *
 * */
-package com.iracanyes.demo.j2ee.ticket.forms;
+package com.iracanyes.demo.j2ee.ticket.business.forms;
 
 import com.iracanyes.demo.j2ee.ticket.UploadFile;
 import jakarta.servlet.ServletException;
